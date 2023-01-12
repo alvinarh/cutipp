@@ -105,12 +105,8 @@
 			if (tahunBerakhir > tahunMulai) {
 				alert('Pilih tahun berakhir cuti yang valid!');
 				$('#btnSubmit').attr('disabled', true);
-			} else if (bulanBerakhir > bulanMulai) {
+			} else if (bulanBerakhir < bulanMulai) {
 				alert('Pilih bulan berakhir cuti yang valid!');
-				$('#btnSubmit').attr('disabled', true);
-			} else if (hariBerakhir < hariMulai) {
-				// alert('Periode tanggal tidak boleh lebih dari 3 bulan!');
-				alert('Pilih tanggal berakhir cuti yang valid!')
 				$('#btnSubmit').attr('disabled', true);
 			} else if (tahunBerakhir > tahunSekarang) {
 				alert('Pilih tahun berakhir cuti yang valid!');
@@ -118,10 +114,7 @@
 			} else if (tahunMulai > tahunSekarang) {
 				alert('Pilih tahun mulai cuti yang valid!');
 				$('#btnSubmit').attr('disabled', true);
-			} else {
-				$('#btnSubmit').attr('disabled', false);
 			}
-
 
 
 		});
