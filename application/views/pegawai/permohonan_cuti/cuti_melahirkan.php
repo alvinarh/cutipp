@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-12 grid-margin">
-	<?php if ($this->session->flashdata('message')) {
-                                            echo '<p class="warning mt-2 mb-2">' . $this->session->flashdata('message') . '</p>';
-                                        } ?>
+		<?php if ($this->session->flashdata('message')) {
+			echo '<p class="warning mt-2 mb-2">' . $this->session->flashdata('message') . '</p>';
+		} ?>
 		<div class="card" style="background: #4682B4;">
 			<div class="card-body">
 				<div class="row mb-3">
@@ -63,5 +63,68 @@
 			}
 
 		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		// $('#berakhir').change(function() {
+		// 	var mulai = $('#mulai').val();
+		// 	var berakhir = $('#berakhir').val();
+		// 	var yearMulai = mulai.substring(0, 4);
+		// 	var monthMulai = mulai.substring(0, 1);
+		// 	var dayMulai = mulai.substring(8, 10);
+		// 	var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+		// 	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+		// 	alert('test');
+
+		// 	// if (diffDays > 90) {
+		// 	// 	alert('Periode tanggal tidak boleh lebih dari 3 bulan!');
+		// 	// 	$('#btnSubmit').attr('disabled', true);
+		// 	// } else {
+		// 	// 	$('#btnSubmit').attr('disabled', false);
+		// 	// }
+
+		// });
+
+		$('#berakhir').change(function() {
+			var mulai = $('#mulai').val();
+			var berakhir = $('#berakhir').val();
+
+			var tahunMulai = mulai.substring(0, 4);
+			var bulanMulai = mulai.substring(5, 7);
+			var hariMulai = mulai.substring(8, 10);
+
+			var tahunBerakhir = berakhir.substring(0, 4);
+			var bulanBerakhir = berakhir.substring(5, 7);
+			var hariBerakhir = berakhir.substring(8, 10);
+
+			var tahunSekarang = new Date().getFullYear();
+
+			if (tahunBerakhir > tahunMulai) {
+				alert('Pilih tahun berakhir cuti yang valid!');
+				$('#btnSubmit').attr('disabled', true);
+			} else if (bulanBerakhir > bulanMulai) {
+				alert('Pilih bulan berakhir cuti yang valid!');
+				$('#btnSubmit').attr('disabled', true);
+			} else if (hariBerakhir < hariMulai) {
+				// alert('Periode tanggal tidak boleh lebih dari 3 bulan!');
+				alert('Pilih tanggal berakhir cuti yang valid!')
+				$('#btnSubmit').attr('disabled', true);
+			} else if (tahunBerakhir > tahunSekarang) {
+				alert('Pilih tahun berakhir cuti yang valid!');
+				$('#btnSubmit').attr('disabled', true);
+			} else if (tahunMulai > tahunSekarang) {
+				alert('Pilih tahun mulai cuti yang valid!');
+				$('#btnSubmit').attr('disabled', true);
+			} else {
+				$('#btnSubmit').attr('disabled', false);
+			}
+
+
+
+		});
+
 	});
 </script>
